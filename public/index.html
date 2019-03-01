@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>reddit api</title>
+
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/module.css">
+  <link rel="stylesheet" href="css/main.css">
+  
+  <script src="fetch-reddit-api.js" async></script>
+  <script src="main.js" async></script>
+  
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+
+  <nav class="nav flex-center">
+    <svg class="nav__reddit-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="_1O4jTk-dZ-VIxsCuYB6OR8">
+      <g>
+        <circle fill="#FF4500" cx="10" cy="10" r="10"></circle>
+        <path fill="#FFF"
+          d="M16.67,10A1.46,1.46,0,0,0,14.2,9a7.12,7.12,0,0,0-3.85-1.23L11,4.65,13.14,5.1a1,1,0,1,0,.13-0.61L10.82,4a0.31,0.31,0,0,0-.37.24L9.71,7.71a7.14,7.14,0,0,0-3.9,1.23A1.46,1.46,0,1,0,4.2,11.33a2.87,2.87,0,0,0,0,.44c0,2.24,2.61,4.06,5.83,4.06s5.83-1.82,5.83-4.06a2.87,2.87,0,0,0,0-.44A1.46,1.46,0,0,0,16.67,10Zm-10,1a1,1,0,1,1,1,1A1,1,0,0,1,6.67,11Zm5.81,2.75a3.84,3.84,0,0,1-2.47.77,3.84,3.84,0,0,1-2.47-.77,0.27,0.27,0,0,1,.38-0.38A3.27,3.27,0,0,0,10,14a3.28,3.28,0,0,0,2.09-.61A0.27,0.27,0,1,1,12.48,13.79Zm-0.18-1.71a1,1,0,1,1,1-1A1,1,0,0,1,12.29,12.08Z">
+        </path>
+      </g>
+    </svg>
+    <form>
+      <label for="input-text"></label>
+      <input class="input-text" id="input-text" type="text" placeholder="search any subreddit">
+    </form>
+  </nav>
+
+  <header>
+    <div>
+      <a class="subreddit-banner flex-center" href="#">
+        <h1 class="subreddit-banner__subreddit">r/leagueoflegends</h1>
+      </a>
+    </div>
+
+    <!-- 
+      buttons to change how the post are displayed
+     -->
+    <div class="contain-views flex-center">
+      <h3 class="contain-views__title">views</h3>
+      <div class="views">
+        <button class="views__button">
+          <svg class="views__display" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="s9hoh6r-4 kTXeMI">
+            <path fill="inherit"
+              d="M1.75,9.375 L1.75,1.75 L18.25,1.75 L18.25,9.375 L1.75,9.375 Z M1.75,18.25 L1.75,10.625 L18.25,10.625 L18.25,18.25 L1.75,18.25 Z">
+            </path>
+          </svg>
+        </button>
+        <button>
+          <svg class="views__display" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="s9hoh6r-3 jKLLmD">
+            <path fill="inherit"
+              d="M1.75,6.60294118 L1.75,1.75 L18.25,1.75 L18.25,6.60294118 L1.75,6.60294118 Z M1.75,12.4264706 L1.75,7.57352941 L18.25,7.57352941 L18.25,12.4264706 L1.75,12.4264706 Z M1.75,18.25 L1.75,13.3970588 L18.25,13.3970588 L18.25,18.25 L1.75,18.25 Z">
+            </path>
+          </svg>
+        </button>
+        <button>
+          <svg class="views__display" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="s9hoh6r-2 cJdMFn">
+            <path fill="inherit"
+              d="M1.75,4.95149254 L1.75,1.75 L18.25,1.75 L18.25,4.95149254 L1.75,4.95149254 Z M1.75,9.38432836 L1.75,6.18283582 L18.25,6.18283582 L18.25,9.38432836 L1.75,9.38432836 Z M1.75,18.25 L1.75,15.0485075 L18.25,15.0485075 L18.25,18.25 L1.75,18.25 Z M1.75,13.8171642 L1.75,10.6156716 L18.25,10.6156716 L18.25,13.8171642 L1.75,13.8171642 Z">
+            </path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="posts">
+    <!-- <article>
+      <a class="post" href="#">
+        <div class="content">
+          <p class="content__author">posted by: brian</p>
+          <div class="content__data">
+            <h3 class="content__title">a title will go here</h3>
+            <p class="content__body">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti corrupti id vel cum molestiae voluptates eos a
+              iste, facere modi? Facilis harum odit reprehenderit cum. Enim dolorum non facilis dolores?
+            </p>
+          </div>
+        </div>
+      </a>
+    </article> -->
+  </section>  
+</body>
+</html>

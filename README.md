@@ -1,1 +1,1 @@
-# pwa-browse-reddit
+# browse-reddit
