@@ -3,6 +3,10 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
+iframe {
+  width: 100%;
+}
+
 .nav__reddit-logo {
   width: 32px;
   height: 32px;
@@ -81,6 +85,7 @@ body {
 
 .content {
   background-color: #edeff1;
+  box-sizing: border-box;
   padding: 8px;
   width: 100%;
 }
