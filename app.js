@@ -1,9 +1,5 @@
 const express = require('express');
 const app = express();
-const enforce = require('express-sslify');
-
-// force https
-app.use(enforce.HTTPS());
 
 // load static assets
 app.use(express.static(__dirname + '/public'));
