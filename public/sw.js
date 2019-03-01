@@ -14,7 +14,7 @@ const filesToCache = [
   'https://www.reddit.com/r/leagueoflegends.json'
 ];
 
-var staticCacheName = 'pages-cache-v2';
+var staticCacheName = 'pages-cache-v3';
 
 self.addEventListener('install', event => {
   console.log('attempting to install service worker and cache static assets');
