@@ -18,6 +18,5 @@
   "homepage": "https://github.com/colorlessenergy/browse-reddit#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "express-sslify": "^1.2.0"
   }
 }
