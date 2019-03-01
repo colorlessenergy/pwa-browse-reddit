@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
+const enforce = require('express-sslify');
+
+// force https
+app.use(enforce.HTTPS());
 
 // load static assets
 app.use(express.static(__dirname + '/public'));
 
-const server = app.listen(8081, () => {
+const server = app.listen(process.env.PORT, () => {
   console.log(__dirname);
   const host = server.address().address;
   const port = server.address().port;
