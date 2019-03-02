@@ -9,9 +9,10 @@ const filesToCache = [
   'css/main.css',
   'css/module.css',
   'css/reset.css',
+  'fetch.js',
   'main.js',
   'fetch-reddit-api.js',
-  'https://www.reddit.com/r/leagueoflegends.json'
+  'https://www.reddit.com/r/leagueoflegends.json',
 ];
 
 var staticCacheName = 'pages-cache-v3';
