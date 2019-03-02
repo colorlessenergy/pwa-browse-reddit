@@ -5,6 +5,12 @@
 let fetchReddit = (function () {
   const wrapper = document.querySelector('.posts');
   function fetchReddit(subreddit) {
+    caches.open('pages-cache-v3').then(function (cache) {
+      return fetch('https://www.reddit.com/r/' + subreddit + '.json').then(function (response) {
+        return cache.put('https://www.reddit.com/r/' + subreddit + '.json', response.clone())
+      });
+    })
+
     wrapper.innerHTML = "";
     fetch('https://www.reddit.com/r/'+ subreddit + '.json', { mode: 'cors' })
       .then(function (res) {
