@@ -36,6 +36,18 @@ self.addEventListener('fetch', event => {
       .then(response => {
         if (response) {
           console.log('Found ', event.request.url, ' in cache');
+          if (event.request.url.includes('json')) {
+            fetch(event.request)
+              .then(response => {
+                console.log('fetching a json file so recaching it')
+                return caches.open(staticCacheName).then(cache => {
+                  cache.put(event.request.url, response.clone());
+                });
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          }
           return response;
         }
         console.log('Network request for ', event.request.url);
