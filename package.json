@@ -1,7 +1,7 @@
 {
   "name": "browse-reddit",
   "version": "1.0.0",
-  "description": "",
+  "description": "a PWA using the reddit api to browse reddit",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"

@@ -5,7 +5,6 @@ const app = express();
 app.use(express.static(__dirname + '/public'));
 
 const server = app.listen(process.env.PORT, () => {
-  console.log(__dirname);
   const host = server.address().address;
   const port = server.address().port;
 

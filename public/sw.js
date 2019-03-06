@@ -1,7 +1,7 @@
-// give an array of files that needs to be 
+// give an array of files that needs to be
 // cached initially
 
-// don't need to add public because the 
+// don't need to add public because the
 // the sw file is in the same directory
 const filesToCache = [
   '/',
@@ -23,7 +23,6 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(staticCacheName)
       .then(cache => {
-        console.log('reached here')
         return cache.addAll(filesToCache);
       })
   );
@@ -36,10 +35,11 @@ self.addEventListener('fetch', event => {
       .then(response => {
         if (response) {
           console.log('Found ', event.request.url, ' in cache');
+
+          // if a JSON file is being fetched recache it.
           if (event.request.url.includes('json')) {
             fetch(event.request)
               .then(response => {
-                console.log('fetching a json file so recaching it')
                 return caches.open(staticCacheName).then(cache => {
                   cache.put(event.request.url, response.clone());
                 });
@@ -50,10 +50,10 @@ self.addEventListener('fetch', event => {
           }
           return response;
         }
+
         console.log('Network request for ', event.request.url);
         return fetch(event.request)
           .then(response => {
-            // TODO 5 - Respond with custom 404 page
             return caches.open(staticCacheName).then(cache => {
               cache.put(event.request.url, response.clone());
               return response;
@@ -62,7 +62,6 @@ self.addEventListener('fetch', event => {
 
       }).catch(error => {
         console.log(error);
-        // TODO 6 - Respond with custom offline page
 
       })
   );
