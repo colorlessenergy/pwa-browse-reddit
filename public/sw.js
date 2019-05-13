@@ -12,10 +12,10 @@ const filesToCache = [
   'fetch.js',
   'main.js',
   'fetch-reddit-api.js',
-  'https://www.reddit.com/r/leagueoflegends.json',
+  'https://www.reddit.com/r/all.json',
 ];
 
-var staticCacheName = 'pages-cache-v6';
+var staticCacheName = 'pages-cache-v7';
 
 self.addEventListener('install', event => {
   console.log('attempting to install service worker and cache static assets');
