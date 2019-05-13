@@ -22,7 +22,7 @@ let fetchReddit = (function () {
           apiData = apiData.data;
           let data = extractDataFromApi(apiData);
 
-          console.log(apiData);
+          // console.log(apiData);
 
           return renderDataFromApi(data);
         });

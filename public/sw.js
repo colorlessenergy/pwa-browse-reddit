@@ -15,7 +15,7 @@ const filesToCache = [
   'https://www.reddit.com/r/leagueoflegends.json',
 ];
 
-var staticCacheName = 'pages-cache-v3';
+var staticCacheName = 'pages-cache-v6';
 
 self.addEventListener('install', event => {
   console.log('attempting to install service worker and cache static assets');
@@ -28,59 +28,52 @@ self.addEventListener('install', event => {
   );
 });
 
-self.addEventListener('fetch', event => {
-  console.log('Fetch event for ', event.request.url);
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
-          console.log('Found ', event.request.url, ' in cache');
+// for JSON files retrieve network first then cache.
 
-          // if a JSON file is being fetched recache it.
-          if (event.request.url.includes('json')) {
-            fetch(event.request)
-              .then(response => {
-                return caches.open(staticCacheName).then(cache => {
-                  cache.put(event.request.url, response.clone());
-                });
-              })
-              .catch(err => {
-                console.log(err);
+// all other files retrieve from cache first then network
+
+self.addEventListener('fetch', function (evt) {
+  console.log('Fetch event for ', evt.request.url);
+  if (evt.request.url.includes('json')) {
+    console.log('[Service Worker] Fetch (data)', evt.request.url);
+    evt.respondWith(
+        caches.open(staticCacheName).then((cache) => {
+          return fetch(evt.request)
+              .then((response) => {
+                // If the response was good, clone it and store it in the cache.
+                if (response.status === 200) {
+                  cache.put(evt.request.url, response.clone());
+                }
+                return response;
+              }).catch((err) => {
+                // Network request failed, try to get it from the cache.
+                return cache.match(evt.request);
               });
-          }
-          return response;
-        }
+        }));
+    return;
+  }
 
-        console.log('Network request for ', event.request.url);
-        return fetch(event.request)
-          .then(response => {
-            return caches.open(staticCacheName).then(cache => {
-              cache.put(event.request.url, response.clone());
-              return response;
+  evt.respondWith(
+      caches.open(staticCacheName).then((cache) => {
+        return cache.match(evt.request)
+            .then((response) => {
+              return response || fetch(evt.request);
             });
-          });
-
-      }).catch(error => {
-        console.log(error);
-
       })
   );
 });
 
-self.addEventListener('activate', event => {
+self.addEventListener('activate', function (evt) {
   console.log('Activating new service worker...');
 
-  const cacheWhitelist = [staticCacheName];
-
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
+  evt.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(keyList.map((key) => {
+        if (key !== staticCacheName) {
+          console.log('[ServiceWorker] Removing old cache', key);
+          return caches.delete(key);
+        }
+      }));
     })
   );
 });
