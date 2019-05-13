@@ -4,7 +4,7 @@ const app = express();
 // load static assets
 app.use(express.static(__dirname + '/public'));
 
-const server = app.listen(4000, () => {
+const server = app.listen(process.env.PORT, () => {
   const host = server.address().address;
   const port = server.address().port;
 

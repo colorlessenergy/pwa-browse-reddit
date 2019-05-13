@@ -151,7 +151,7 @@ let fetchReddit = (function () {
     return str;
   }
 
-  fetchReddit('leagueoflegends');
+  fetchReddit('all');
 
   return fetchReddit;
 })();
