@@ -40,10 +40,7 @@ self.addEventListener('fetch', function (evt) {
         caches.open(staticCacheName).then((cache) => {
           return fetch(evt.request)
               .then((response) => {
-                // If the response was good, clone it and store it in the cache.
-                if (response.status === 200) {
-                  cache.put(evt.request.url, response.clone());
-                }
+                cache.put(evt.request.url, response.clone());
                 return response;
               }).catch((err) => {
                 // Network request failed, try to get it from the cache.
@@ -67,6 +64,7 @@ self.addEventListener('activate', function (evt) {
   console.log('Activating new service worker...');
 
   evt.waitUntil(
+    self.clients.claim(),
     caches.keys().then((keyList) => {
       return Promise.all(keyList.map((key) => {
         if (key !== staticCacheName) {
