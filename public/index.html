@@ -93,5 +93,21 @@
       </a>
     </article> -->
   </section>
+
+  <script>
+    // register service worker
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js')
+        .then(swReg => {
+          console.log('Service Worker is registered', swReg);
+        })
+        .catch(err => {
+          console.error('Service Worker Error', err);
+        });
+    });
+  }
+  </script>
 </body>
 </html>
