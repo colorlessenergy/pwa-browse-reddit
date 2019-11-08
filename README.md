@@ -25,7 +25,7 @@ _I don't think there are any bugs_
 
 ## Support and contact details
 
-_If you run into any issues or have questions, ideas or concerns contact me at brianmunodev@gmail.com_
+_If you run into any issues or have questions, ideas or concerns contact me at brianmunozdev@gmail.com_
 
 ## Technologies Used
 
